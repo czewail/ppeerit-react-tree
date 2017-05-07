@@ -1,22 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import 'font-awesome/css/font-awesome.css'
 import './styles/tree.less'
+
+import Node from './components/node'
 
 export default class Tree extends React.Component {
     constructor(props){
         super(props)
-    }
-    // render node
-    _renderNode(node, index) {
-        console.log(node)
-        return (
-            <li key={index}>
-                <div>
-                    <span>{node.name}</span>
-                </div>
-            </li>
-        )
     }
     // render component
     render() {
@@ -24,13 +16,17 @@ export default class Tree extends React.Component {
             <div>
                 <ul className="pr-tree-container">
                     {this.props.data.map((node, index) => {
-                        return this._renderNode(node, index)
+                        return (<Node node={node} key={index}/>)
                     })}
                 </ul>
             </div>
         )
     }
 }
-Tree.PropTypes = {
-    data: PropTypes.object,
+Tree.propTypes = {
+    data: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ]),
 }
+
