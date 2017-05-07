@@ -3,8 +3,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Tree from './tree'
+import data from '../tests/data.js'
 
 ReactDOM.render(
-    <Tree/>,
+    <Tree data={data} />,
     document.getElementById('tree')
 )
