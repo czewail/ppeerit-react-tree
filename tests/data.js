@@ -2,6 +2,7 @@ export default [
     {
         id: 1,
         name: '真诚智能',
+        open: true,
         children: [
             {
                 id: 11,

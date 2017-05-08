@@ -15,8 +15,8 @@ export default class Tree extends React.Component {
         return (
             <div>
                 <ul className="pr-tree-container">
-                    {this.props.data.map((node, index) => {
-                        return (<Node node={node} key={index}/>)
+                    {this.props.data.map((node, key) => {
+                        return (<Node node={node} key={key}/>)
                     })}
                 </ul>
             </div>
@@ -27,6 +27,6 @@ Tree.propTypes = {
     data: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.array
-    ]),
+    ])
 }
 

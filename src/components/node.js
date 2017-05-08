@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Node extends React.Component {
     constructor(props){
@@ -11,37 +12,43 @@ export default class Node extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            node: this.props.node,
-            index: this.props.index
+            node: this.props.node
         })
     }
-    _renderNode = (node, key) => {
-        return (
-            <li key={key}>
-                <span className="pr-tree-node">
-                    <span className="pr-tree-expander">
-                        <i className="fa fa-angle-right"></i>
-                    </span>
-                    <span className="pr-tree-icon">
-                        <i className="fa fa-home"></i>
-                    </span>
-                    <a href="#" className="pr-tree-name">{node.name}</a>
-                </span>
-                {node.children ?
-                    <ul className="pr-tree-container">
-                        {node.children.map((node, key) => {
-                            return this._renderNode(node, key)
-                        })}
-                    </ul>
-                    :
-                    null
-                }
-            </li>
-        )
+    _handleClickOpenNode = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
     }
     render() {
         return (
-            this._renderNode(this.state.node, this.state.index)
+            <li>
+                <span className="pr-tree-node">
+                    {this.state.node.children ?
+                        <span className="pr-tree-expander" onClick={this._handleClickOpenNode}>
+                            <i className={classNames('fa', {'fa-angle-right': !this.state.isOpen},{'fa-angle-down': this.state.isOpen})}></i>
+                        </span>
+
+                        :
+                        <span className="pr-tree-none" onClick={this._handleClickOpenNode}/>
+                    }
+
+                    <span className="pr-tree-icon">
+                        <i className="fa fa-home"></i>
+                    </span>
+                    <a href="#" className="pr-tree-name">{this.state.node.name}</a>
+                </span>
+                {this.state.node.children ?
+                    this.state.isOpen ?
+                        <ul className="pr-tree-container">
+                            {this.state.node.children.map((node, key) => {
+                                return <Node node={node} key={key}/>
+                            })}
+                        </ul>
+                        : null
+                    : null
+                }
+            </li>
         )
     }
 }

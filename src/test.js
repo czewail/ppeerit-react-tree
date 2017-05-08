@@ -6,6 +6,6 @@ import Tree from './tree'
 import data from '../tests/data.js'
 
 ReactDOM.render(
-    <Tree data={data} />,
+    <Tree data={data}/>,
     document.getElementById('tree')
 )
