@@ -10,13 +10,25 @@ export default class Tree extends React.Component {
     constructor(props){
         super(props)
     }
+
     // render component
     render() {
+        const props = this.props
+        const cloneProps = {
+            root: this,
+            defineKey: props.defineKey,
+            defineTitle: props.defineTitle,
+            defineChildren: props.defineChildren,
+            defineParentIcon: props.defineParentIcon,
+            defineChildIcon: props.defineChildIcon,
+            defineIconColor: props.defineIconColor,
+            handleSelect: props.handleSelect,
+        }
         return (
             <div>
                 <ul className="pr-tree-container">
                     {this.props.data.map((node, key) => {
-                        return (<Node node={node} key={key}/>)
+                        return (<Node node={node} key={key} {...cloneProps}/>)
                     })}
                 </ul>
             </div>
@@ -27,6 +39,22 @@ Tree.propTypes = {
     data: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.array
-    ])
+    ]),
+    defineKey: PropTypes.string,
+    defineTitle: PropTypes.string,
+    defineChildren: PropTypes.string,
+    defineParentIcon: PropTypes.string,
+    defineChildIcon: PropTypes.string,
+    defineIconColor: PropTypes.string,
+    onSelect: PropTypes.func
+}
+Tree.defaultProps = {
+    data: [],
+    defineKey: 'id',
+    defineTitle: 'name',
+    defineChildren: 'children',
+    defineParentIcon: 'fa fa-folder',
+    defineChildIcon: 'fa fa-file',
+    defineIconColor: 'black'
 }
 
