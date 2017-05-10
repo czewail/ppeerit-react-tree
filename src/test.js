@@ -10,9 +10,10 @@ ReactDOM.render(
         handleSelect={(key, title) => {
             console.log(key)
             console.log(title)
+            alert('you selected node: key = ' + key + ', title = ' + title)
         }}
-        defineParentIcon='fa fa-home'
-        defineChildIcon='fa fa-lock'
+        defineParentIcon='fa fa-user'
+        defineChildIcon='fa fa-user'
         defineIconColor='#09f'
     />,
     document.getElementById('tree')
