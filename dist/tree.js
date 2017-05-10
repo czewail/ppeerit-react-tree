@@ -5265,6 +5265,7 @@ var Tree = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Tree.__proto__ || Object.getPrototypeOf(Tree)).call(this, props));
 
         _this.handleSelect = function (e) {
+            e.preventDefault();
             var key = e.target.getAttribute('data-id');
             var title = e.target.getAttribute('data-title');
             _this.setState({
@@ -5325,7 +5326,7 @@ Tree.propTypes = {
     defineParentIcon: _propTypes2.default.string,
     defineChildIcon: _propTypes2.default.string,
     defineIconColor: _propTypes2.default.string,
-    onSelect: _propTypes2.default.func
+    handleSelect: _propTypes2.default.func
 };
 Tree.defaultProps = {
     data: [],
@@ -5334,7 +5335,8 @@ Tree.defaultProps = {
     defineChildren: 'children',
     defineParentIcon: 'fa fa-folder',
     defineChildIcon: 'fa fa-file',
-    defineIconColor: 'black'
+    defineIconColor: 'black',
+    handleSelect: function handleSelect() {}
 };
 
 /***/ }),
@@ -5360,7 +5362,7 @@ exports = module.exports = __webpack_require__(14)(undefined);
 
 
 // module
-exports.push([module.i, ".pr-tree-container {\n  background-color: transparent;\n  font-family: tahoma, arial, helvetica;\n  font-size: 10pt;\n  white-space: nowrap;\n  padding: 3px;\n  margin: 0;\n  overflow: auto;\n  min-height: 0%;\n}\n.pr-tree-container ul {\n  padding: 0 0 0 16px;\n  margin: 0;\n}\n.pr-tree-container li {\n  list-style: none;\n  line-height: 24px;\n}\n.pr-tree-container li .tree-wholerow {\n  width: 100%;\n  height: 24px;\n  background: #beebff;\n  background: -webkit-linear-gradient(top, #beebff 0, #a8e4ff 100%);\n  background: linear-gradient(to bottom, #beebff 0, #a8e4ff 100%);\n  box-sizing: border-box;\n  transition: background-color 0.15s, box-shadow 0.15s;\n  cursor: pointer;\n  position: absolute;\n  left: 0;\n  z-index: -1;\n}\n.pr-tree-container li .pr-tree-node {\n  display: inline-block;\n  position: relative;\n}\n.pr-tree-container li .pr-tree-node a {\n  font-size: 10pt;\n  display: inline-block;\n  padding-left: 3px;\n  padding-right: 3px;\n}\n.pr-tree-container li .pr-tree-node .pr-tree-icon,\n.pr-tree-container li .pr-tree-node .pr-tree-expander,\n.pr-tree-container li .pr-tree-node .pr-tree-none {\n  width: 16px;\n  height: 24px;\n  cursor: pointer;\n  display: inline-block;\n  vertical-align: middle;\n}\n.pr-tree-container li a {\n  color: #626262;\n  text-decoration: none;\n  margin: 0px;\n  margin-left: 3px;\n}\n", ""]);
+exports.push([module.i, ".pr-tree-container {\n  background-color: transparent;\n  font-family: tahoma, arial, helvetica;\n  font-size: 10pt;\n  white-space: nowrap;\n  padding: 3px;\n  margin: 0;\n  overflow: auto;\n  min-height: 0%;\n}\n.pr-tree-container ul {\n  padding: 0 0 0 16px;\n  margin: 0;\n}\n.pr-tree-container li {\n  list-style: none;\n  line-height: 24px;\n}\n.pr-tree-container li .tree-wholerow {\n  width: 100%;\n  height: 24px;\n  background: #beebff;\n  background: -webkit-linear-gradient(top, #beebff 0, #a8e4ff 100%);\n  background: linear-gradient(to bottom, #beebff 0, #a8e4ff 100%);\n  box-sizing: border-box;\n  transition: background-color 0.15s, box-shadow 0.15s;\n  cursor: pointer;\n  position: absolute;\n  left: 0;\n}\n.pr-tree-container li .pr-tree-node {\n  display: inline-block;\n  position: relative;\n}\n.pr-tree-container li .pr-tree-node a {\n  font-size: 10pt;\n  display: inline-block;\n  padding-left: 3px;\n  padding-right: 3px;\n}\n.pr-tree-container li .pr-tree-node .pr-tree-icon,\n.pr-tree-container li .pr-tree-node .pr-tree-expander,\n.pr-tree-container li .pr-tree-node .pr-tree-none {\n  width: 16px;\n  height: 24px;\n  cursor: pointer;\n  display: inline-block;\n  vertical-align: middle;\n}\n.pr-tree-container li a {\n  color: #626262;\n  text-decoration: none;\n  margin: 0px;\n  margin-left: 3px;\n}\n", ""]);
 
 // exports
 

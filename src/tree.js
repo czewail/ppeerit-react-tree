@@ -15,6 +15,7 @@ export default class Tree extends React.Component {
     }
 
     handleSelect = (e) => {
+        e.preventDefault()
         let key = e.target.getAttribute('data-id')
         let title = e.target.getAttribute('data-title')
         this.setState({
@@ -60,7 +61,7 @@ Tree.propTypes = {
     defineParentIcon: PropTypes.string,
     defineChildIcon: PropTypes.string,
     defineIconColor: PropTypes.string,
-    onSelect: PropTypes.func
+    handleSelect: PropTypes.func
 }
 Tree.defaultProps = {
     data: [],
@@ -69,6 +70,7 @@ Tree.defaultProps = {
     defineChildren: 'children',
     defineParentIcon: 'fa fa-folder',
     defineChildIcon: 'fa fa-file',
-    defineIconColor: 'black'
+    defineIconColor: 'black',
+    handleSelect: ()=>{}
 }
 
