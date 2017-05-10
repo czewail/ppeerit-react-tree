@@ -7,8 +7,20 @@ import './styles/tree.less'
 import Node from './components/node'
 
 export default class Tree extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
+        this.state = {
+            selectedKey: null
+        }
+    }
+
+    handleSelect = (e) => {
+        let key = e.target.getAttribute('data-id')
+        let title = e.target.getAttribute('data-title')
+        this.setState({
+            selectedKey: key
+        })
+        this.props.handleSelect(key, title)
     }
 
     // render component
@@ -22,7 +34,8 @@ export default class Tree extends React.Component {
             defineParentIcon: props.defineParentIcon,
             defineChildIcon: props.defineChildIcon,
             defineIconColor: props.defineIconColor,
-            handleSelect: props.handleSelect,
+            handleSelect: this.handleSelect,
+            selectedKey: this.state.selectedKey
         }
         return (
             <div>
@@ -35,6 +48,7 @@ export default class Tree extends React.Component {
         )
     }
 }
+
 Tree.propTypes = {
     data: PropTypes.oneOfType([
         PropTypes.object,

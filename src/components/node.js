@@ -22,6 +22,9 @@ export default class Node extends React.Component {
             isOpen: !this.state.isOpen
         })
     }
+    handleSelect = (e) => {
+        this.props.handleSelect(e)
+    }
 
     render() {
         const props = this.props
@@ -34,10 +37,15 @@ export default class Node extends React.Component {
             defineChildIcon: props.defineChildIcon,
             defineIconColor: props.defineIconColor,
             handleSelect: props.handleSelect,
+            selectedKey: props.selectedKey
         }
         return (
             <li>
-                <span className="pr-tree-node">
+                {Number(this.state.node[this.props.defineKey]) === Number(props.selectedKey) ?
+                    <div className="tree-wholerow"></div>
+                    : null
+                }
+                <span className={classNames('pr-tree-node')}>
                     {this.state.node[this.props.defineChildren] ?
                         <span className="pr-tree-expander" onClick={this._handleClickOpenNode}>
                             <i className={classNames('fa', {'fa-angle-right': !this.state.isOpen}, {'fa-angle-down': this.state.isOpen})}></i>
@@ -51,7 +59,7 @@ export default class Node extends React.Component {
                                 <i className={props.defineChildIcon}></i>
                         }
                     </span>
-                    <a href="#" onClick={props.handleSelect} data-id={this.state.node[this.props.defineKey]} data-title={this.state.node[this.props.defineTitle]} className="pr-tree-name">{this.state.node[this.props.defineTitle]}</a>
+                    <a href="#" onClick={this.handleSelect} data-id={this.state.node[this.props.defineKey]} data-title={this.state.node[this.props.defineTitle]} className="pr-tree-name">{this.state.node[this.props.defineTitle]}</a>
                 </span>
                 {this.state.node[this.props.defineChildren] ?
                     this.state.isOpen ?

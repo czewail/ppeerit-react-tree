@@ -1,4 +1,3 @@
-import 'core-js/fn/object/assign'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -8,9 +7,9 @@ import data from '../tests/data.js'
 ReactDOM.render(
     <Tree
         data={data.lists}
-        handleSelect={(e) => {
-            console.log(e.target.getAttribute('data-title'))
-            console.log(e.target.getAttribute('data-id'))
+        handleSelect={(key, title) => {
+            console.log(key)
+            console.log(title)
         }}
         defineParentIcon='fa fa-home'
         defineChildIcon='fa fa-lock'

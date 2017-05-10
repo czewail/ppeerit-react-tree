@@ -35,10 +35,10 @@ module.exports = {
                 loader: "css-loader" // translates CSS into CommonJS
             }, {
                 loader: "less-loader" // compiles Less to CSS
-            },{
-                test: /\.(woff|woff2|svg|eot|ttf)\??.*$/,
-                loader: 'file-loader'
             }]
+        },{
+            test: /\.(woff|woff2|svg|eot|ttf)\??.*$/,
+            loader: 'file-loader'
         }]
     }
 }
