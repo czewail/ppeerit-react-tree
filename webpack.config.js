@@ -4,17 +4,9 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'tree.js',
-        libraryTarget: 'umd',
-        library: 'Tree',
+        library: "Tree",
+        libraryTarget: "umd",
         publicPath: "/assets/",
-    },
-    externals: {
-        react: {
-            commonjs: "react",
-            commonjs2: "react",
-            amd: "react",
-            root: "React"
-        }
     },
     module: {
         rules: [{

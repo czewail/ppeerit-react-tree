@@ -31258,7 +31258,6 @@ var Node = function (_React$Component) {
         };
 
         _this.state = {
-            node: null,
             isOpen: false
         };
         return _this;
@@ -31268,7 +31267,6 @@ var Node = function (_React$Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             this.setState({
-                node: this.props.node,
                 isOpen: this.props.node.open ? true : false
             });
         }
@@ -31290,11 +31288,11 @@ var Node = function (_React$Component) {
             return _react2.default.createElement(
                 'li',
                 null,
-                Number(this.state.node[this.props.defineKey]) === Number(props.selectedKey) ? _react2.default.createElement('div', { className: 'tree-wholerow' }) : null,
+                Number(props.node[props.defineKey]) === Number(props.selectedKey) ? _react2.default.createElement('div', { className: 'tree-wholerow' }) : null,
                 _react2.default.createElement(
                     'span',
                     { className: (0, _classnames2.default)('pr-tree-node') },
-                    this.state.node[this.props.defineChildren] ? _react2.default.createElement(
+                    props.node[props.defineChildren].length ? _react2.default.createElement(
                         'span',
                         { className: 'pr-tree-expander', onClick: this._handleClickOpenNode },
                         _react2.default.createElement('i', { className: (0, _classnames2.default)('fa', { 'fa-angle-right': !this.state.isOpen }, { 'fa-angle-down': this.state.isOpen }) })
@@ -31302,18 +31300,18 @@ var Node = function (_React$Component) {
                     _react2.default.createElement(
                         'span',
                         { className: 'pr-tree-icon', style: { color: props.defineIconColor } },
-                        this.state.node.icon ? _react2.default.createElement('i', { className: this.state.node.icon }) : this.state.node[this.props.defineChildren] ? _react2.default.createElement('i', { className: props.defineParentIcon }) : _react2.default.createElement('i', { className: props.defineChildIcon })
+                        this.props.node.icon ? _react2.default.createElement('i', { className: this.props.node.icon }) : this.props.node[this.props.defineChildren].length ? _react2.default.createElement('i', { className: props.defineParentIcon }) : _react2.default.createElement('i', { className: props.defineChildIcon })
                     ),
                     _react2.default.createElement(
                         'a',
-                        { href: '#', onClick: this.handleSelect, 'data-id': this.state.node[this.props.defineKey], 'data-title': this.state.node[this.props.defineTitle], className: 'pr-tree-name' },
-                        this.state.node[this.props.defineTitle]
+                        { href: '#', onClick: this.handleSelect, 'data-id': props.node[props.defineKey], 'data-title': props.node[props.defineTitle], className: 'pr-tree-name' },
+                        props.node[props.defineTitle]
                     )
                 ),
-                this.state.node[this.props.defineChildren] ? this.state.isOpen ? _react2.default.createElement(
+                props.node[props.defineChildren].length ? this.state.isOpen ? _react2.default.createElement(
                     'ul',
                     { className: 'pr-tree-container' },
-                    this.state.node[this.props.defineChildren].map(function (node, key) {
+                    props.node[props.defineChildren].map(function (node, key) {
                         return _react2.default.createElement(Node, _extends({ node: node, key: key }, cloneProps));
                     })
                 ) : null : null
